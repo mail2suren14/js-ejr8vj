@@ -1,0 +1,88 @@
+<!--
+	Part 2 - JavaScript
+	NAME: 1.Given values for acctData and balances below, write a function that returns only an array of account numbers, and accepts the following optional parameters:
+		  - user
+		  - sortBy (accepts "acctNum" or "balance")
+		  - sortDirection (accepts "asc" or "desc"; default to asc)
+-->
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>1. Given values for acctData and balances below, write a function that returns only an array of account numbers, and accepts the following optional parameters:</h2>
+<p>Please Visit the Result in the browser console</p>
+
+<p id="demo"></p>
+
+<script>
+var acctData = [
+{
+"acctNum": "AAA - 1234",
+"user": "Alice"
+},
+{
+"acctNum": "AAA - 5231",
+"user": "Bob"
+},
+{
+"acctNum": "AAA - 9921",
+"user": "Alice"
+},
+{
+"acctNum": "AAA - 8191",
+"user": "Alice"
+}
+];
+
+//console.log(acctData);
+balance = {
+"AAA - 1234": 4593.22,
+"AAA - 9921": 0,
+"AAA - 5231": 232142.5,
+"AAA - 8191": 1
+};
+
+
+keysArr = Object.keys(balance);
+balValArr=Object.values(balance);
+totalArr=new Array(3)
+
+/*Sort By Balance in an Ascending Order*/
+
+function sortNumber(a, b) {
+  return a - b;
+}
+
+
+balValArr.sort(sortNumber);
+
+acctData.forEach(function(arrData) {
+  
+	keysArr.forEach(function(element) {
+	
+		if(arrData.acctNum == element){
+			
+			var jsonObj={"acctNum": arrData.acctNum,
+					"user": arrData.user,
+				
+					"balance":balance[element]
+				
+			
+					};
+			totalArr.splice( balValArr.indexOf(balance[element]), 1, jsonObj);
+			
+
+		
+		
+}
+
+})
+
+});  
+console.log("*** SortBy Balance & SortDirection is Default to Ascending ***");
+console.log(totalArr)
+</script>
+
+</body>
+</html>
